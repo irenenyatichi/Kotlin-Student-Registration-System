@@ -20,14 +20,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        val etName=findViewById(R.id.etName)
-        val etDateOfBirth=findViewById(R.id.etDateOfBirth)
-        val etNationality=findViewById(R.id.etNationality)
-        val etIdNumber=findViewById(R.id.etIdNumber)
-        val etPhone=findViewById(R.id.etPhone)
-        val etEmailAddress=findViewById(R.id.etEmailAdress)
-        val btnRegister=findViewById(R.id.btnRegister)
+        val etName  = findViewById(R.id.etName)
+//        val etName=findViewById(R.id.etName)
+//        val etDateOfBirth=findViewById(R.id.etDateOfBirth)
+//        val etNationality=findViewById(R.id.etNationality)
+//        val etIdNumber=findViewById(R.id.etIdNumber)
+//        val etPhone=findViewById(R.id.etPhone)
+//        val etEmailAddress= findViewById(R.id.etEmailAdress)
+//        val btnRegister=findViewById(R.id.btnRegister)
 
         btnRegister.setOnClickListener {
         val name =etName.text.toString()
