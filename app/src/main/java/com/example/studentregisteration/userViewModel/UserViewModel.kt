@@ -1,24 +1,26 @@
-package com.example.studentregisteration.userViewModel
+package com.example.registration.viewmodel
 
-import android.app.VoiceInteractor
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.registration.models.RegistrationRequest
 import com.example.registration.models.RegistrationResponse
-import kotlin.coroutines.launch
+import com.example.registration.repository.UserRepository
+import kotlinx.coroutines.launch
 
-class UserViewModel:ViewModel {
+class UserViewModel: ViewModel() {
+    var registrationLiveData = MutableLiveData<RegistrationResponse>()
+    var regFailedLiveData = MutableLiveData<String>()
     var userRepository = UserRepository()
-    var regResponseLiveData = MutableLiveData<RegistrationResponse>()
-    var regErrorLiveData = MutableLiveData<String>()
 
-    fun registerUser(registerationRequest:RegistrationRequest){
-        viewModelScope.launch{
-            var response = userRepository.registerUser(registerationRequest)
+    fun registerStudent(registrationRequest: RegistrationRequest){
+        viewModelScope.launch {
+            var response = userRepository.registerStudent(registrationRequest)
             if (response.isSuccessful){
-                regResponseLiveData.postValue(response.body())
+                registrationLiveData.postValue(response.body())         //observes and waits for data to change and updates UI
             }
             else{
-                regErrorLiveData.postValue(response.errorBody()?.string())
+                regFailedLiveData.postValue(response.errorBody()?.string())
             }
         }
     }
