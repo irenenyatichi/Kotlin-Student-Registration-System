@@ -1,6 +1,7 @@
-package com.example.studentregisteration.Models
+package com.example.registration.models
 
-data class LoginRequest(
-        val email:String,
-        val password:String,
+
+data class LogInRequest(
+    var email: String,
+    var password: String
 )
